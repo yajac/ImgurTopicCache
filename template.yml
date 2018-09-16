@@ -6,24 +6,16 @@ Transform:
 Parameters:
   ProjectId:
     Type: String
-    Description: AWS CodeStar projectID used to associate new resources to team members
-
-# Enable blue/green deployments using this Globals section. For instructions, see the AWS CodeStar User Guide:
-# https://docs.aws.amazon.com/codestar/latest/userguide/how-to-modify-serverless-project.html?icmpid=docs_acs_rm_tr
-#
-# Globals:
-#   Function:
-#     AutoPublishAlias: live
-#     DeploymentPreference:
-#       Enabled: true
-#       Type: Canary10Percent5Minutes
+    Description: Imgur Subreddit Cache
 
 Resources:
-  GetHelloWorld:
+  GetSubtopic:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: com.aws.codestar.projecttemplates.handler.HelloWorldHandler
+      Handler: org.yajac.imgur.handler.ImgurCacheReadHandler
       Runtime: java8
+      Timeout: 30
+      MemorySize: 512
       Role:
         Fn::ImportValue:
           !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
@@ -31,20 +23,21 @@ Resources:
         GetEvent:
           Type: Api
           Properties:
-            Path: /
+            Path: /{subreddit}
             Method: get
-
-  PostHelloWorld:
+  CacheSubTopic:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: com.aws.codestar.projecttemplates.handler.HelloWorldHandler
+      Handler: org.yajac.imgur.handler.ImgurCacheWriteHandler
       Runtime: java8
+      Timeout: 30
+      MemorySize: 512
       Role:
         Fn::ImportValue:
           !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
       Events:
-        PostEvent:
+        PutEvent:
           Type: Api
           Properties:
-            Path: /
-            Method: post
+            Path: /{subreddit}
+            Method: put
