@@ -13,7 +13,7 @@ public class PersistCacheManager {
 
 	public static final String INSERT_TIME = "insertTime";
 
-	public static long TTL_TIME = 60 * 60 * 24 * 14;
+	public static long TTL_TIME = 60 * 60 * 24 * 28;
 
 	private AmazonDynamoDB amazonDynamoDB;
 
