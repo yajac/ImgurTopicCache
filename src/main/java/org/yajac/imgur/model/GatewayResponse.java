@@ -1,6 +1,5 @@
-package com.aws.codestar.projecttemplates;
+package org.yajac.imgur.model;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,24 +9,30 @@ import java.util.Map;
 public class GatewayResponse {
 
     private final String body;
-    private final Map<String, String> headers;
     private final int statusCode;
+    private Map<String, String> headers = new HashMap<>();
 
-    public GatewayResponse(final String body, final Map<String, String> headers, final int statusCode) {
+
+    /**
+     * Cache Read Response
+     * @param body
+     * @param statusCode
+     */
+    public GatewayResponse(final String body, final int statusCode) {
         this.statusCode = statusCode;
         this.body = body;
-        this.headers = Collections.unmodifiableMap(new HashMap<>(headers));
+        headers.put("Access-Control-Allow-Origin", "*");
     }
 
     public String getBody() {
         return body;
     }
 
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
-
     public int getStatusCode() {
         return statusCode;
+    }
+
+    public Map<String, String> getHeaders() {
+        return headers;
     }
 }
