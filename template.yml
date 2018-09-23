@@ -37,9 +37,7 @@ Resources:
                 type: none
               x-amazon-apigateway-integration:
                 uri:
-                  Fn::Sub:
-                    - arn:aws:apigateway:us-east-1:lambda:path/functions/${FunctionArn}/invocations
-                    - { FunctionArn: !GetAtt GetSubtopic.Arn }
+                  Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetSubtopic.Arn}/invocations"
                 httpMethod: POST
                 type: aws_proxy
 #            post:
