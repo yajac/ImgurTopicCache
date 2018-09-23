@@ -32,6 +32,15 @@ Resources:
                   in: "path"
                   required: true
               responses: {}
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub: !Sub GetSubtopic
+                httpMethod: GET
+                type: aws_proxy
+        definitions:
+          Empty:
+            type: object
+            title: Empty Schema
   GetSubtopic:
     Type: AWS::Serverless::Function
     Properties:
