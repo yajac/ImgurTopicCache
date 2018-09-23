@@ -19,9 +19,9 @@ public class ImgurCacheWriteHandler implements RequestHandler<ImgurGalleryReques
     static final String table = "imgurGallery";
 
     public GatewayResponse handleRequest(final ImgurGalleryRequest input, final Context context) {
-        context.getLogger().log("subreddit: " + input);
         final SubRedditListing client = new SubRedditListing();
         final String subreddit = input.getPathParameters().get("subreddit");
+        context.getLogger().log("subreddit: " + subreddit);
         setCache(client, subreddit);
         return new GatewayResponse("{'Output': 'Success'}", 200);
     }

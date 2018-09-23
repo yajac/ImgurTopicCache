@@ -9,10 +9,31 @@ Parameters:
     Description: Imgur Subreddit Cache
 
 Resources:
+  SubtopicAPI:
+    Type: AWS::Serverless::Api
+    Name: subtopicAPI
+    Properties:
+      StageName: Dev
+      DefinitionBody: {}
+      CacheClusterEnabled: true
+      Cors: "*"
+      DefinitionBody:
+        swagger: 2.0
+        info:
+          title:
+            Ref: AWS::StackName
+        paths:
+          /{subreddit}:
+            get:
+              parameters:
+                - name: "subreddit"
+                  in: "path"
+                  required: true
   GetSubtopic:
     Type: AWS::Serverless::Function
     Properties:
       Handler: org.yajac.imgur.handler.ImgurCacheReadHandler
+#      CodeUri: ./target/ImgurTopicCache-1.0.jar
       Runtime: java8
       Timeout: 30
       MemorySize: 512
@@ -25,6 +46,8 @@ Resources:
           Properties:
             Path: /{subreddit}
             Method: get
+            RestApiId: !Ref SubtopicAPI
+
   CacheSubTopic:
     Type: AWS::Serverless::Function
     Properties:
