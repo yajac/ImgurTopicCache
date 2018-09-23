@@ -23,8 +23,7 @@ Resources:
       DefinitionBody:
         swagger: 2.0
         info:
-          title:
-            Ref: AWS::StackName
+          title: Imgur Subtopic
         paths:
           /{subreddit}:
             get:
