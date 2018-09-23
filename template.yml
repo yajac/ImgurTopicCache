@@ -40,7 +40,6 @@ Resources:
                   Fn::Sub:
                     - arn:aws:apigateway:us-east-1:lambda:path/functions/${FunctionArn}/invocations
                     - { FunctionArn: !GetAtt GetSubtopic.Arn }
-                httpMethod: POST
                 type: aws_proxy
             post:
               parameters:
