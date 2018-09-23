@@ -16,7 +16,10 @@ Resources:
       StageName: Dev
       DefinitionBody: {}
       CacheClusterEnabled: true
-      Cors: "*"
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
       DefinitionBody:
         swagger: 2.0
         info:
