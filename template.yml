@@ -52,19 +52,19 @@ Resources:
             Method: get
             RestApiId: !Ref SubtopicAPI
 
-  CacheSubTopic:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: org.yajac.imgur.handler.ImgurCacheWriteHandler
-      Runtime: java8
-      Timeout: 30
-      MemorySize: 512
-      Role:
-        Fn::ImportValue:
-          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
-      Events:
-        PutEvent:
-          Type: Api
-          Properties:
-            Path: /{subreddit}
-            Method: put
+#  CacheSubTopic:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      Handler: org.yajac.imgur.handler.ImgurCacheWriteHandler
+#      Runtime: java8
+#      Timeout: 30
+#      MemorySize: 512
+#      Role:
+#        Fn::ImportValue:
+#          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+#      Events:
+#        PutEvent:
+#          Type: Api
+#          Properties:
+#            Path: /{subreddit}
+#            Method: put
