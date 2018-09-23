@@ -39,7 +39,7 @@ Resources:
       Handler: org.yajac.imgur.handler.ImgurCacheReadHandler
 #      CodeUri: ./target/ImgurTopicCache-1.0.jar
       Runtime: java8
-      Timeout: 30
+      Timeout: 20
       MemorySize: 512
       Role:
         Fn::ImportValue:
