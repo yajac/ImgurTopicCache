@@ -33,13 +33,13 @@ Resources:
                   in: "path"
                   required: true
               responses: {}
-              x-amazon-apigateway-integration:
-                uri:
-                  Fn::Sub:
-                    - arn:aws:apigateway:us-east-1:lambda:path/functions/${FunctionArn}/invocations
-                    - { FunctionArn: !GetAtt GetSubtopic.Arn }
-                httpMethod: GET
-                type: aws_proxy
+#              x-amazon-apigateway-integration:
+#                uri:
+#                  Fn::Sub:
+#                    - arn:aws:apigateway:us-east-1:lambda:path/functions/${FunctionArn}/invocations
+#                    - { FunctionArn: !GetAtt GetSubtopic.Arn }
+#                httpMethod: GET
+#                type: aws_proxy
         definitions:
           Empty:
             type: object
