@@ -59,7 +59,7 @@ Resources:
           Type: Api
           Properties:
             Path: /{subreddit}
-            Method: get
+            Method: GET
             RestApiId: !Ref SubtopicAPI
 
 #  CacheSubTopic:
