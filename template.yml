@@ -16,7 +16,7 @@ Resources:
       StageName: Dev
       DefinitionBody: {}
       CacheClusterEnabled: true
-      CacheClusterSize: 1
+      CacheClusterSize: "1"
 #      Cors:
 #        AllowMethods: "'*'"
 #        AllowHeaders: "'*'"
