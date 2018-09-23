@@ -34,7 +34,9 @@ Resources:
               responses: {}
               x-amazon-apigateway-integration:
                 uri:
-                  Fn::Sub: !Sub GetSubtopic
+                  Fn::Sub:
+                    - arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/${FunctionArn}/invocations
+                    - { FunctionArn: !GetAtt GetSubtopic.Arn }
                 httpMethod: GET
                 type: aws_proxy
         definitions:
