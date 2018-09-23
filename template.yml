@@ -96,4 +96,4 @@ Resources:
           Properties:
             Path: /{subreddit}
             Method: put
-             RestApiId: !Ref SubtopicAPI
+            RestApiId: !Ref SubtopicAPI
