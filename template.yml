@@ -29,6 +29,7 @@ Resources:
                 - name: "subreddit"
                   in: "path"
                   required: true
+              responses: {}
   GetSubtopic:
     Type: AWS::Serverless::Function
     Properties:
