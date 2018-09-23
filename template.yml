@@ -40,7 +40,7 @@ Resources:
                   Fn::Sub:
                     - arn:aws:apigateway:us-east-1:lambda:path/functions/${FunctionArn}/invocations
                     - { FunctionArn: !GetAtt GetSubtopic.Arn }
-                httpMethod: GET
+                httpMethod: POST
                 type: aws_proxy
             post:
               parameters:
@@ -65,7 +65,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: org.yajac.imgur.handler.ImgurCacheReadHandler
-#      CodeUri: ./target/ImgurTopicCache-1.0.jar
+      CodeUri: ./target/ImgurTopicCache-1.0.jar
       Runtime: java8
       Timeout: 20
       MemorySize: 512
