@@ -27,6 +27,7 @@ public class PersistCacheManager {
 		Table table = dynamoDB.getTable(tableName);
 		QuerySpec spec = new QuerySpec()
 				.withKeyConditionExpression(HASH + " = :subreddit")
+				.withScanIndexForward(false)
 				.withValueMap(new ValueMap()
 						.withString(":subreddit", subreddit));
 
